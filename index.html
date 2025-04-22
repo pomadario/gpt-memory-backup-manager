@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GPT Memory Backup Manager</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; background-color: #f3f4f6; color: #111827; padding: 2rem; max-width: 800px; margin: auto; }
+    h1 { color: #1f2937; }
+    .card { background: white; border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); }
+    .btn { background-color: #3b82f6; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; margin-right: 0.75rem; transition: background-color 0.3s ease; }
+    .btn:hover { background-color: #2563eb; }
+    .file-input { margin-top: 1rem; }
+    textarea { width: 100%; height: 200px; margin-top: 1rem; font-family: monospace; padding: 1rem; border-radius: 8px; border: 1px solid #d1d5db; background: #f9fafb; }
+  </style>
+</head>
+<body>
+  <h1>🧠 GPT Memory Backup Manager</h1>
+  <div class="card">
+    <h2>📥 Scarica Memorie</h2>
+    <p>Scarica il backup delle memorie GPT in diversi formati:</p>
+    <a class="btn" href="memorie_complete_con_sistema.txt" download>Scarica .TXT</a>
+    <a class="btn" href="memorie_complete_con_sistema.csv" download>Scarica .CSV</a>
+    <a class="btn" href="memorie_complete_con_sistema.json" download>Scarica .JSON</a>
+  </div>
+  <div class="card">
+    <h2>📤 Carica Memorie</h2>
+    <p>Carica un file di backup per visualizzarlo o ripristinarlo manualmente:</p>
+    <input type="file" class="file-input" id="fileInput" accept=".txt,.json,.csv" />
+    <textarea id="fileContent" placeholder="Il contenuto apparirà qui..."></textarea>
+  </div>
+  <script>
+    document.getElementById('fileInput').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        document.getElementById('fileContent').value = event.target.result;
+      };
+      reader.readAsText(file);
+    });
+  </script>
+</body>
+</html>

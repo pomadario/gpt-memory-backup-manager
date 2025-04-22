@@ -1,0 +1,14 @@
+[
+  {
+    "titolo": "Sistema autonomo verifica su Drive e GitHub",
+    "contenuto": "Dario desidera sviluppare un sistema completamente autonomo all'interno di SUPER PROMPT che verifichi in modo continuo e automatico la capacità dell’assistente di leggere, scrivere, cancellare e modificare file su Google Drive e GitHub. Il sistema deve operare senza intervento umano, eseguire test funzionali reali, validare i risultati ed eventualmente correggere automaticamente le anomalie.",
+    "categoria": "SUPER PROMPT",
+    "data": "2025-04-22"
+  },
+  {
+    "titolo": "Memoria Persistente Utente",
+    "contenuto": "Informazioni salvate a lungo termine tra sessioni (es. nome, progetti, preferenze). Accessibile in chat.openai.com/memory. Ogni blocco è modificabile o eliminabile. Serve per personalizzazioni intelligenti.",
+    "categoria": "Sistema GPT",
+    "data": "2025-04-22"
+  }
+]
