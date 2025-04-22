@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>GPT Memory Backup Manager</title>
+  <title>GPT Memory Backup Manager + Drive</title>
   <style>
     body { font-family: 'Segoe UI', sans-serif; background-color: #f3f4f6; color: #111827; padding: 2rem; max-width: 900px; margin: auto; }
     h1 { color: #1f2937; }
@@ -13,11 +13,13 @@
     .btn:hover { background-color: #2563eb; }
     .file-input { margin-top: 1rem; }
     textarea { width: 100%; height: 200px; margin-top: 1rem; font-family: monospace; padding: 1rem; border-radius: 8px; border: 1px solid #d1d5db; background: #f9fafb; }
-    .status { margin-top: 1rem; font-size: 0.9rem; color: #10b981; font-weight: bold; }
+    .status { margin-top: 1rem; font-size: 0.9rem; font-weight: bold; }
+    .status.green { color: #10b981; }
+    .status.red { color: #ef4444; }
   </style>
 </head>
 <body>
-  <h1>🧠 GPT Memory Backup Manager</h1>
+  <h1>🧠 GPT Memory Backup Manager + Drive</h1>
 
   <div class="card">
     <h2>📥 Scarica Memorie</h2>
@@ -28,18 +30,19 @@
   </div>
 
   <div class="card">
-    <h2>📤 Carica Memorie</h2>
+    <h2>📤 Carica e Gestisci Memorie</h2>
     <p>Carica un file di backup per visualizzarlo o ripristinarlo manualmente:</p>
     <input type="file" class="file-input" id="fileInput" accept=".txt,.json,.csv" />
     <textarea id="fileContent" placeholder="Il contenuto apparirà qui..."></textarea>
-    <div class="status" id="uploadStatus"></div>
+    <div class="status green" id="uploadStatus"></div>
   </div>
 
   <div class="card">
-    <h2>⚙️ Azioni</h2>
-    <p>Operazioni disponibili sulle memorie caricate:</p>
+    <h2>⚙️ Azioni Avanzate</h2>
+    <p>Interagisci direttamente con il tuo backup GPT:</p>
     <button class="btn" onclick="ripristinaMemoria()">🧠 Ripristina nel contesto GPT</button>
     <button class="btn" onclick="salvaComeNuova()">💾 Salva come nuova memoria</button>
+    <button class="btn" onclick="uploadSuDrive()">☁️ Upload su Google Drive</button>
     <div class="status" id="actionStatus"></div>
   </div>
 
@@ -63,23 +66,33 @@
     function ripristinaMemoria() {
       if (!fileContent.value.trim()) {
         actionStatus.textContent = "⚠️ Nessuna memoria caricata.";
-        actionStatus.style.color = "#ef4444";
+        actionStatus.className = "status red";
         return;
       }
-      actionStatus.style.color = "#10b981";
-      actionStatus.textContent = "🧠 Memoria pronta per il ripristino nel contesto GPT (simulazione)";
+      actionStatus.textContent = "🧠 Memoria GPT ripristinata nel contesto attivo! (simulato)";
+      actionStatus.className = "status green";
     }
 
     function salvaComeNuova() {
       if (!fileContent.value.trim()) {
         actionStatus.textContent = "⚠️ Nessun contenuto da salvare.";
-        actionStatus.style.color = "#ef4444";
+        actionStatus.className = "status red";
         return;
       }
-      actionStatus.style.color = "#10b981";
-      actionStatus.textContent = "💾 Memoria simulata salvata correttamente (mock)";
+      actionStatus.textContent = "💾 Nuova memoria GPT simulata salvata!";
+      actionStatus.className = "status green";
+    }
+
+    function uploadSuDrive() {
+      if (!fileContent.value.trim()) {
+        actionStatus.textContent = "⚠️ Nessun contenuto da inviare.";
+        actionStatus.className = "status red";
+        return;
+      }
+      // Simulazione: nella versione reale si userà Google Apps Script o Google Picker API
+      actionStatus.textContent = "☁️ File simulato inviato a Google Drive!";
+      actionStatus.className = "status green";
     }
   </script>
 </body>
 </html>
-
